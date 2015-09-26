@@ -17,7 +17,7 @@ namespace JuBuilder
             alias["nvarchar"] = "string";
             alias["datetime"] = "DateTime";
             alias["float"] = "double";
-            alias["decimal"] = "double";
+            alias["decimal"] = "decimal";
             alias["bit"] = "bool";
         }
         public string GetLower(string type)
