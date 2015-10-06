@@ -215,6 +215,7 @@ namespace JuBuilder
                 if (field == "CreateAt" ) continue;
                 if (ftype == "varchar" || ftype == "nvarchar")
                     ftype += string.Format("({0})", dr["CharLength"]);
+                if (ftype == "decimal") ftype = "float";//decimal需要写精度才行， 如果不写就只有整数没有小数。所以用float代替。
                 var outline = string.Format("\t@{0} {1}," + Environment.NewLine, field, ftype);
                 lst.Add(outline);
             }
