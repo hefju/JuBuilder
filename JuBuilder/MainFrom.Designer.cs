@@ -46,8 +46,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.连接到数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.初始化配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.测试BaseFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,13 @@
             this.初始化配置文件ToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
             this.初始化配置文件ToolStripMenuItem.Text = "初始化配置文件";
             this.初始化配置文件ToolStripMenuItem.Click += new System.EventHandler(this.初始化配置文件ToolStripMenuItem_Click);
+            // 
+            // 测试BaseFormToolStripMenuItem
+            // 
+            this.测试BaseFormToolStripMenuItem.Name = "测试BaseFormToolStripMenuItem";
+            this.测试BaseFormToolStripMenuItem.Size = new System.Drawing.Size(102, 21);
+            this.测试BaseFormToolStripMenuItem.Text = "测试BaseForm";
+            this.测试BaseFormToolStripMenuItem.Click += new System.EventHandler(this.测试BaseFormToolStripMenuItem_Click);
             // 
             // dockPanel1
             // 
@@ -130,13 +137,6 @@
             this.dockPanel1.Skin = dockPanelSkin1;
             this.dockPanel1.TabIndex = 2;
             // 
-            // 测试BaseFormToolStripMenuItem
-            // 
-            this.测试BaseFormToolStripMenuItem.Name = "测试BaseFormToolStripMenuItem";
-            this.测试BaseFormToolStripMenuItem.Size = new System.Drawing.Size(102, 21);
-            this.测试BaseFormToolStripMenuItem.Text = "测试BaseForm";
-            this.测试BaseFormToolStripMenuItem.Click += new System.EventHandler(this.测试BaseFormToolStripMenuItem_Click);
-            // 
             // MainFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -147,7 +147,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainFrom";
-            this.Text = "未注册";
+            this.Text = "代码生成";
             this.Load += new System.EventHandler(this.MainFrom_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
