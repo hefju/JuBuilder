@@ -420,6 +420,7 @@ namespace JuBuilder
             , field, row2, col2, tabcount);
                 sWriter.Write(area2 + Environment.NewLine);
 
+                lstPnlCenter.Add(string.Format("\t\t\tthis.pnlCenter.AutoScroll = true;", field));//2015.11.27, 编辑界面的主界面的panel要自动添加滚动条
                 lstPnlCenter.Add(string.Format("\t\t\tthis.pnlCenter.Controls.Add(this.lbl{0});", field));
                 lstPnlCenter.Add(string.Format("\t\t\tthis.pnlCenter.Controls.Add(this.txt{0});", field));
             }
