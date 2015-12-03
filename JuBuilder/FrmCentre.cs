@@ -583,6 +583,25 @@ namespace JuBuilder
         {
             loadConfig();
         }
+
+        private void btnCreateUpdate_Click(object sender, EventArgs e)
+        {
+            var tablename = txtTableName.Text;
+            var table = (DataTable)this.gridColumns.DataSource;
+            //CsType cstype = new CsType();
+            var sb = new StringBuilder();
+            sb.Append(string.Format("Update {0} set ",tablename));
+            foreach (DataRow dr in table.Rows)
+            {
+
+                var field = dr["ColumnName"].ToString();
+                if (field == "CreateAt") continue;
+
+                sb.Append(string.Format("{0}=b.{0},", field));
+           
+            }
+            txtupdate.Text = sb.ToString();
+        }
       
 
       
