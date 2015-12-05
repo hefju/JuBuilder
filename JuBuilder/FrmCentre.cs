@@ -251,7 +251,7 @@ namespace JuBuilder
         private void Create_Entity(string tableName, string namespace2)
         {
             var modelFileName = "model/Entity.cs";
-            var newFileName = "output/" + tableName + "Info.cs";
+            var newFileName = "output/" + tableName + ".cs";
             if (File.Exists(newFileName)) File.Delete(newFileName);
             var fileStream = File.Create(newFileName);
             StreamWriter sWriter = null;
