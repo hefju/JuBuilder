@@ -48,8 +48,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gridIndexs = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnCreateUpdate = new System.Windows.Forms.Button();
             this.txtupdate = new System.Windows.Forms.RichTextBox();
+            this.btnCreateUpdate = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtUI_Entity = new System.Windows.Forms.RichTextBox();
+            this.btn_Row_To_Entity = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,6 +67,7 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIndexs)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -224,6 +228,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -236,7 +241,7 @@
             this.tabPage1.Controls.Add(this.gridColumns);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(892, 483);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "表字段";
@@ -261,7 +266,7 @@
             this.tabPage2.Controls.Add(this.gridIndexs);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(892, 483);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "表索引";
@@ -293,6 +298,14 @@
             this.tabPage3.Text = "生成sql语句";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // txtupdate
+            // 
+            this.txtupdate.Location = new System.Drawing.Point(22, 75);
+            this.txtupdate.Name = "txtupdate";
+            this.txtupdate.Size = new System.Drawing.Size(797, 359);
+            this.txtupdate.TabIndex = 2;
+            this.txtupdate.Text = "";
+            // 
             // btnCreateUpdate
             // 
             this.btnCreateUpdate.Location = new System.Drawing.Point(22, 17);
@@ -303,13 +316,35 @@
             this.btnCreateUpdate.UseVisualStyleBackColor = true;
             this.btnCreateUpdate.Click += new System.EventHandler(this.btnCreateUpdate_Click);
             // 
-            // txtupdate
+            // tabPage4
             // 
-            this.txtupdate.Location = new System.Drawing.Point(22, 75);
-            this.txtupdate.Name = "txtupdate";
-            this.txtupdate.Size = new System.Drawing.Size(797, 359);
-            this.txtupdate.TabIndex = 2;
-            this.txtupdate.Text = "";
+            this.tabPage4.Controls.Add(this.txtUI_Entity);
+            this.tabPage4.Controls.Add(this.btn_Row_To_Entity);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(892, 483);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "UI转成实体";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtUI_Entity
+            // 
+            this.txtUI_Entity.Location = new System.Drawing.Point(22, 66);
+            this.txtUI_Entity.Name = "txtUI_Entity";
+            this.txtUI_Entity.Size = new System.Drawing.Size(797, 359);
+            this.txtUI_Entity.TabIndex = 3;
+            this.txtUI_Entity.Text = "";
+            // 
+            // btn_Row_To_Entity
+            // 
+            this.btn_Row_To_Entity.Location = new System.Drawing.Point(18, 11);
+            this.btn_Row_To_Entity.Name = "btn_Row_To_Entity";
+            this.btn_Row_To_Entity.Size = new System.Drawing.Size(203, 23);
+            this.btn_Row_To_Entity.TabIndex = 0;
+            this.btn_Row_To_Entity.Text = "DataGridViewRow 转实体";
+            this.btn_Row_To_Entity.UseVisualStyleBackColor = true;
+            this.btn_Row_To_Entity.Click += new System.EventHandler(this.btn_Row_To_Entity_Click);
             // 
             // FrmCentre
             // 
@@ -337,6 +372,7 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridIndexs)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -365,5 +401,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnCreateUpdate;
         private System.Windows.Forms.RichTextBox txtupdate;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btn_Row_To_Entity;
+        private System.Windows.Forms.RichTextBox txtUI_Entity;
     }
 }

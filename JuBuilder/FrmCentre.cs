@@ -584,6 +584,7 @@ namespace JuBuilder
             loadConfig();
         }
 
+        //生成Update语句, 多表更新时候, a表的字段名和b表的字段名是一模一样的, mssql自带工具生成的等于号右边是空白. 我这个方法会补充好右边的.
         private void btnCreateUpdate_Click(object sender, EventArgs e)
         {
             var tablename = txtTableName.Text;
@@ -602,6 +603,34 @@ namespace JuBuilder
             }
             txtupdate.Text = sb.ToString();
         }
+
+        //UI界面上的数据转换成实体类, 这个是针对DataGridViewRow来写的, 
+        private void btn_Row_To_Entity_Click(object sender, EventArgs e)
+        {
+            var tablename = txtTableName.Text;
+            var table = (DataTable)this.gridColumns.DataSource;
+            CsType cstype = new CsType();
+            var sb = new StringBuilder();
+            sb.Append(string.Format(" {0} info = new {0}();\n", tablename));
+
+            foreach (DataRow dr in table.Rows)
+            {
+                var field = dr["ColumnName"].ToString();
+                if (field == "CreateAt" || field == "ID" || field == "statu") continue;
+                var ftype = dr["ColumnType"].ToString();
+
+                var fieldParse = string.Format("dr.Cells[\"{0}\"].Value.ToString();", field);
+                var whatType = cstype.GetLower(ftype);
+                if (whatType != "string")
+                    fieldParse = string.Format("{0}.Parse(dr.Cells[\"{1}\"].Value.ToString());", whatType, field);
+
+
+                sb.Append(string.Format("info.{0} = {1}\n", field, fieldParse));
+            }
+            txtUI_Entity.Text = sb.ToString();
+        }
+
+    
       
 
       
