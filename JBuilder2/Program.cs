@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JuBuilder
+namespace JBuilder2
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace JuBuilder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainFrom());//MainFrom   //FrmTxt2Field 根据文本生成ctreate table语句
+            Application.Run(new MainForm());
         }
     }
 }
