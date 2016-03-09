@@ -33,7 +33,7 @@ namespace JuBuilder
 
         public static DataTable GetColumns(string connString, string database, string tableName)
         {
-            string sql = string.Format(@"select
+            string sql = string.Format(@"select 
                                         a.name ColumnName,
                                         b.name ColumnType,
                                         a.is_identity IsIdentity,
