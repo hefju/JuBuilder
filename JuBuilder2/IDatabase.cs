@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JuBuilder2
 {
-
+    //普通工厂模式, 返回相应的数据库,但这不怎么好
     interface IDatabase
     {
         bool Connect(string ConnectString);
