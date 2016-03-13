@@ -21,5 +21,20 @@ namespace JBuilder2
         {
             cbDB.SelectedIndex = 0;
         }
+
+        private DataTable  LoadSQLTableTree()
+        {
+            BLLSQL get = new BLLSQL();
+            return get.GetSQLTableTree();
+        }
+
+        private void TreeADD()
+        {
+            DataTable dt = LoadSQLTableTree();
+            foreach (DataRow dr in dt.Rows)
+            {
+                treeView1.Nodes.Add(new TreeNode(dr[0].ToString()));
+            }
+        }
     }
 }
