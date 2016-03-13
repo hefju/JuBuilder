@@ -30,7 +30,7 @@ namespace JBuilder2
         {
             string sql = string.Format("select * from information_schema.columns  AS A INNER JOIN SYSCOLUMNS AS B ON B.NAME=A.COLUMN_NAME  where table_name = '{0}' AND ID=OBJECT_ID('{0}' )",TableName);
             DataTable dt = SQLServer.ExecutTable(sql);
-            return new DataTable();
+            return dt;
         }
 
         //private DataTable GetSQLTableType(string TableName)

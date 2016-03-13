@@ -15,6 +15,7 @@ namespace JBuilder2
         public MainForm()
         {
             InitializeComponent();
+            TreeADD();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -34,6 +35,24 @@ namespace JBuilder2
             foreach (DataRow dr in dt.Rows)
             {
                 treeView1.Nodes.Add(new TreeNode(dr[0].ToString()));
+            }
+        }
+
+        private void GetColumnsType(string TableName)
+        {
+            BLLSQL get = new BLLSQL();
+            dataGridView1.DataSource= get.GetSQLTableColumns(TableName);
+        }
+
+        private void treeView1_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+               GetColumnsType(treeView1.SelectedNode.Text);
             }
         }
     }
