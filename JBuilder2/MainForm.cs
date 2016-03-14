@@ -55,5 +55,10 @@ namespace JBuilder2
                GetColumnsType(treeView1.SelectedNode.Text);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
