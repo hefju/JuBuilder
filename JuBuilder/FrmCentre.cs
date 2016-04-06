@@ -219,6 +219,7 @@ namespace JuBuilder
                 var outline = string.Format("\t@{0} {1}," + Environment.NewLine, field, ftype);
                 lst.Add(outline);
             }
+            lst.Add("	@UserID int   ");
             var msg = string.Join("", lst);
             msg = msg.Remove(msg.Length - 3);
             sWriter.Write(msg);//+ Environment.NewLine);
@@ -508,6 +509,7 @@ namespace JuBuilder
                 if (field == "CreateAt") continue;
                 lst.Add("info." + field);
             }
+            lst.Add("User.UserID");
             var outmsg = string.Join(",", lst);
             outmsg = "\t\t\t\t" + outmsg + ");";
             sWriter.Write(outmsg + Environment.NewLine);
@@ -524,6 +526,7 @@ namespace JuBuilder
                 lst.Add("'{" + count.ToString() + "}'");
                 count++;
             }
+            lst.Add("'{" + count.ToString() + "}'");//UserID 2016.4.6
             var outmsg = string.Join(",", lst);
             outmsg = "\t\t\t\t\"" + outmsg + "\",";
             //sWriter.Write(outmsg + Environment.NewLine);
