@@ -619,7 +619,7 @@ namespace JuBuilder
             foreach (DataRow dr in table.Rows)
             {
                 var field = dr["ColumnName"].ToString();
-                if (field == "CreateAt" || field == "ID" || field == "statu") continue;
+                if (field == "CreateAt" || field == "statu") continue;
                 var ftype = dr["ColumnType"].ToString();
 
                 var fieldParse = string.Format("dr.Cells[\"{0}\"].Value.ToString();", field);
