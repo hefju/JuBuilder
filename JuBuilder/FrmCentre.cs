@@ -633,6 +633,89 @@ namespace JuBuilder
             txtUI_Entity.Text = sb.ToString();
         }
 
+
+        List<string> lstDef = new List<string>();
+        Point lblpoint = new Point();
+        Point txtpoint = new Point();
+        int FiledCount = 0;
+        int step = 10;
+        private void btn生成设计代码_Click(object sender, EventArgs e)
+        {
+            lstDef.Clear();
+            txtsjdm设计代码.Clear();
+            txtDef.Clear();
+            txtDataUI.Clear();
+            txtUIData.Clear();
+
+            lblpoint.X = 0;
+            lblpoint.Y = 0;
+            txtpoint.X = 80;
+            txtpoint.Y = 0;
+
+            foreach (DataGridViewRow dr in gridColumns.Rows)
+            {
+                var ColumnName = dr.Cells["ColumnName"].Value.ToString();
+                CreateOneControl(ColumnName);//生成控件代码
+                var ColumnType = dr.Cells["ColumnType"].Value.ToString();
+                CreateUI_Data(ColumnName, ColumnType);//生成数据和UI互相取值
+            }
+
+            foreach (var item in lstDef)
+            {
+                 txtDef.AppendText(item);
+            }
+
+        }
+
+        private void CreateUI_Data(string ColumnName, string ColumnType)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CreateOneControl(string ColumnName)
+        {
+            FiledCount++;//根据字段个数计算出控件的位置
+
+            var str_def_lbl = string.Format("private System.Windows.Forms.Label lbl{0};\r\n", ColumnName);
+            var str_def_txt = string.Format("private System.Windows.Forms.TextBox txt{0};\r\n", ColumnName);
+
+            var str_new_lbl = string.Format("this.lbl{0} = new System.Windows.Forms.Label();\r\n", ColumnName);
+            var str_attr_lbl = string.Format(
+            "this.lbl{0}.AutoSize = true;\r\n" +
+            "this.lbl{0}.BackColor = System.Drawing.Color.Transparent;\r\n" +
+            "this.lbl{0}.Location = new System.Drawing.Point({1}, {2});\r\n" +
+            "this.lbl{0}.Name = \"lbl{0}\";\r\n" +
+            "this.lbl{0}.Size = new System.Drawing.Size(123, 24);\r\n" +
+            "this.lbl{0}.Text = \"{0}\";\r\n"+
+            "this.Controls.Add(this.lbl{0});\r\n"
+            , ColumnName, lblpoint.X, lblpoint.Y);
+            lblpoint.Y = (FiledCount % step)* 30;
+            lblpoint.X = (FiledCount / step) * 250;
+
+
+            txtsjdm设计代码.AppendText(str_new_lbl);
+            txtsjdm设计代码.AppendText(str_attr_lbl);
+
+            var str_new_txt = string.Format("this.txt{0} = new System.Windows.Forms.TextBox();\r\n", ColumnName);
+            var str_attr_txt = string.Format(
+            "this.txt{0}.Location = new System.Drawing.Point({1}, {2});\r\n" +
+			"this.txt{0}.Name = \"txt姓名\";\r\n" +
+            "this.txt{0}.Size = new System.Drawing.Size(150, 21);\r\n" +
+			"this.txt{0}.TabIndex = {3};\r\n"+
+            "this.Controls.Add(this.txt{0});\r\n"
+             , ColumnName, txtpoint.X, txtpoint.Y,   FiledCount);
+            txtpoint.Y = (FiledCount % step) * 30;
+            txtpoint.X = (FiledCount / step) * 250 + 80;
+
+
+            txtsjdm设计代码.AppendText(str_new_txt);
+            txtsjdm设计代码.AppendText(str_attr_txt);
+
+            lstDef.Add(str_def_lbl);
+            lstDef.Add(str_def_txt);
+        
+        }
+
     
       
 
