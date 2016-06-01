@@ -605,6 +605,31 @@ namespace JuBuilder
            
             }
             txtupdate.Text = sb.ToString();
+
+            var sbInsert1 = new StringBuilder();
+            var sbInsert2 = new StringBuilder();
+            sbInsert1.Append(string.Format("INSERT INTO  {0} ( ", tablename));
+            sbInsert2.Append(" VALUES (");
+            string comma = "";
+            int fIndex = 0;
+            foreach (DataRow dr in table.Rows)
+            {
+
+                var field = dr["ColumnName"].ToString();
+                if (field == "ID") continue;
+                if (field == "CreateAt") continue;
+
+                sbInsert1.Append(string.Format(comma+"{0}", field));
+                sbInsert2.Append(string.Format(comma+"'[{0}]'", fIndex));
+                comma = ",";
+                fIndex++;
+            }
+            sbInsert1.Append(")");
+            sbInsert2.Append(")");
+            txtupdate.AppendText("\r\n\r\n");
+
+            txtupdate.AppendText(sbInsert1.ToString());
+            txtupdate.AppendText(sbInsert2.ToString()); 
         }
 
         //UI界面上的数据转换成实体类, 这个是针对DataGridViewRow来写的, 
@@ -669,7 +694,7 @@ namespace JuBuilder
 
         private void CreateUI_Data(string ColumnName, string ColumnType)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void CreateOneControl(string ColumnName)
