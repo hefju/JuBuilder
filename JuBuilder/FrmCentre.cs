@@ -599,6 +599,7 @@ namespace JuBuilder
             {
 
                 var field = dr["ColumnName"].ToString();
+                if (field == "ID") continue;
                 if (field == "CreateAt") continue;
 
                 sb.Append(string.Format("{0}=b.{0},", field));
@@ -608,7 +609,8 @@ namespace JuBuilder
 
             var sbInsert1 = new StringBuilder();
             var sbInsert2 = new StringBuilder();
-            sbInsert1.Append(string.Format("INSERT INTO  {0} ( ", tablename));
+            var sbInsert3 = new StringBuilder();
+            sbInsert1.Append(string.Format("var sql = string.Format(\"INSERT INTO  {0} ( ", tablename));
             sbInsert2.Append(" VALUES (");
             string comma = "";
             int fIndex = 0;
@@ -621,15 +623,41 @@ namespace JuBuilder
 
                 sbInsert1.Append(string.Format(comma+"{0}", field));
                 sbInsert2.Append(string.Format(comma+"'[{0}]'", fIndex));
+                sbInsert3.Append(string.Format(comma + "x.{0}", field));
                 comma = ",";
                 fIndex++;
             }
             sbInsert1.Append(")");
             sbInsert2.Append(")");
+            //sbInsert3.Append(");");
+            var strInsert2 = sbInsert2.ToString().Replace('[', '{').Replace(']', '}');
             txtupdate.AppendText("\r\n\r\n");
 
             txtupdate.AppendText(sbInsert1.ToString());
-            txtupdate.AppendText(sbInsert2.ToString()); 
+            txtupdate.AppendText(strInsert2);
+            txtupdate.AppendText("\",");
+            txtupdate.AppendText(sbInsert3.ToString() + ");");
+
+            fIndex = 0;
+            comma = "";
+            var sbUpdate2 = new StringBuilder();
+            sbUpdate2.Append(string.Format("var sql = string.Format(\"Update {0} set ", tablename));
+            foreach (DataRow dr in table.Rows)
+            {
+
+                var field = dr["ColumnName"].ToString();
+                if (field == "ID") continue;
+                if (field == "CreateAt") continue;
+
+                sbUpdate2.Append(string.Format(comma + "{0}='[{1}]'", field, fIndex));
+                comma = ",";
+                fIndex++;
+            }
+            var strUpdate2 = sbUpdate2.ToString().Replace('[', '{').Replace(']', '}');
+            txtupdate.AppendText("\r\n\r\n");
+            txtupdate.AppendText(strUpdate2);
+            txtupdate.AppendText(string.Format(" where ID=[{0}]\",", fIndex).Replace('[', '{').Replace(']', '}'));
+            txtupdate.AppendText(sbInsert3.ToString() + ",x.ID);");
         }
 
         //UI界面上的数据转换成实体类, 这个是针对DataGridViewRow来写的, 

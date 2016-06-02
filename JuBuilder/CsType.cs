@@ -19,6 +19,7 @@ namespace JuBuilder
             alias["float"] = "double";
             alias["decimal"] = "decimal";
             alias["bit"] = "bool";
+            alias["datetime"] = "DateTime?";
         }
         public string GetLower(string type)
         {
