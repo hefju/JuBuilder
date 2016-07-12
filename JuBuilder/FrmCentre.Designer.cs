@@ -31,6 +31,7 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtConnString = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnCheat = new System.Windows.Forms.Button();
             this.btnReLoadConfig = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNamespace_MODEL = new System.Windows.Forms.TextBox();
@@ -109,6 +110,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.splitContainer1.Panel1.Controls.Add(this.btnCheat);
             this.splitContainer1.Panel1.Controls.Add(this.btnReLoadConfig);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.txtNamespace_MODEL);
@@ -127,6 +129,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(1283, 561);
             this.splitContainer1.SplitterDistance = 48;
             this.splitContainer1.TabIndex = 5;
+            // 
+            // btnCheat
+            // 
+            this.btnCheat.Location = new System.Drawing.Point(223, 22);
+            this.btnCheat.Name = "btnCheat";
+            this.btnCheat.Size = new System.Drawing.Size(162, 23);
+            this.btnCheat.TabIndex = 14;
+            this.btnCheat.Text = "不用选择,直接打开数据表";
+            this.btnCheat.UseVisualStyleBackColor = true;
+            this.btnCheat.Click += new System.EventHandler(this.btnCheat_Click);
             // 
             // btnReLoadConfig
             // 
@@ -173,7 +185,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 28);
+            this.label1.Location = new System.Drawing.Point(8, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 8;
@@ -181,7 +193,7 @@
             // 
             // txtTableName
             // 
-            this.txtTableName.Location = new System.Drawing.Point(160, 23);
+            this.txtTableName.Location = new System.Drawing.Point(73, 23);
             this.txtTableName.Name = "txtTableName";
             this.txtTableName.Size = new System.Drawing.Size(149, 21);
             this.txtTableName.TabIndex = 7;
@@ -220,7 +232,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer2.Size = new System.Drawing.Size(1283, 509);
-            this.splitContainer2.SplitterDistance = 280;
+            this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 0;
             // 
             // treeView1
@@ -230,7 +242,7 @@
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(280, 509);
+            this.treeView1.Size = new System.Drawing.Size(25, 509);
             this.treeView1.TabIndex = 0;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             // 
@@ -245,7 +257,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(999, 509);
+            this.tabControl1.Size = new System.Drawing.Size(1254, 509);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -254,7 +266,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(991, 483);
+            this.tabPage1.Size = new System.Drawing.Size(1246, 483);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "表字段";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -270,7 +282,7 @@
             this.gridColumns.Name = "gridColumns";
             this.gridColumns.ReadOnly = true;
             this.gridColumns.RowTemplate.Height = 23;
-            this.gridColumns.Size = new System.Drawing.Size(985, 477);
+            this.gridColumns.Size = new System.Drawing.Size(1240, 477);
             this.gridColumns.TabIndex = 7;
             // 
             // tabPage2
@@ -525,5 +537,6 @@
         private System.Windows.Forms.RichTextBox txtDataUI;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCheat;
     }
 }

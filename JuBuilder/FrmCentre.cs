@@ -24,17 +24,35 @@ namespace JuBuilder
             loadConfig();
         }
         private void loadConfig(){
-            if (MainFrom.uicofing.ContainsKey("namespace_VIEW"))
-                txtNamespace_VIEW.Text = MainFrom.uicofing["namespace_VIEW"];
-            if (MainFrom.uicofing.ContainsKey("namespace_MODEL"))
-                txtNamespace_MODEL.Text = MainFrom.uicofing["namespace_MODEL"];
-            if (MainFrom.uicofing.ContainsKey("connectstring"))
-                txtConnString.Text = MainFrom.uicofing["connectstring"];
+            //if (MainFrom.uicofing.ContainsKey("namespace_VIEW"))
+            //    txtNamespace_VIEW.Text = MainFrom.uicofing["namespace_VIEW"];
+            //if (MainFrom.uicofing.ContainsKey("namespace_MODEL"))
+            //    txtNamespace_MODEL.Text = MainFrom.uicofing["namespace_MODEL"];
+            //if (MainFrom.uicofing.ContainsKey("connectstring"))
+            //    txtConnString.Text = MainFrom.uicofing["connectstring"];
 
-            txtConnString.Text = ConfigurationManager.AppSettings["connnectstring"];
-            txtNamespace_VIEW.Text = ConfigurationManager.AppSettings["namespace_VIEW"];
-            txtNamespace_MODEL.Text = ConfigurationManager.AppSettings["namespace_MODEL"];
+            //txtConnString.Text = ConfigurationManager.AppSettings["connnectstring"];
+            //txtNamespace_VIEW.Text = ConfigurationManager.AppSettings["namespace_VIEW"];
+            //txtNamespace_MODEL.Text = ConfigurationManager.AppSettings["namespace_MODEL"];
+
+
+            Default_connString = ConfigurationManager.AppSettings["Default_connString"];
+            Default_database = ConfigurationManager.AppSettings["Default_database"];
+            Default_tableName = ConfigurationManager.AppSettings["Default_tableName"];
+
+            Default_Namespace_VIEW = ConfigurationManager.AppSettings["Default_Namespace_VIEW"];
+            Default_Namespace_MODEL = ConfigurationManager.AppSettings["Default_Namespace_MODEL"];
+
+            txtConnString.Text = Default_connString;
+            txtNamespace_VIEW.Text = Default_Namespace_VIEW;
+            txtNamespace_MODEL.Text = Default_Namespace_MODEL;
         }
+       private  string Default_connString="";
+        private string Default_database="";
+        private string Default_tableName="";
+
+        private string Default_Namespace_VIEW = "";
+        private string Default_Namespace_MODEL = "";
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -767,6 +785,12 @@ namespace JuBuilder
             lstDef.Add(str_def_lbl);
             lstDef.Add(str_def_txt);
         
+        }
+
+        private void btnCheat_Click(object sender, EventArgs e)
+        {
+            var tableName = txtTableName.Text == "" ? Default_tableName : txtTableName.Text;
+            this.gridColumns.DataSource = SqlQuery.GetColumns(Default_connString, Default_database, tableName);
         }
 
     

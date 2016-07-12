@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace JuBuilder2.DAL
 {
-    public interface IDatabase
-    {
-        bool Connect(string ConnectString);
+    //public interface IDatabase
+    //{
+    //    bool Connect(string ConnectString);
 
-        //bool Command(string SQL);
+    //    //bool Command(string SQL);
 
-        void ExecuteNonQuery(string connectionString, string sql);
+    //    void ExecuteNonQuery(string connectionString, string sql);
 
-        object ExecuteScalar(string connectionString, string sql);
+    //    object ExecuteScalar(string connectionString, string sql);
 
-        DataTable GetTable(string connectionString, string sql);
+    //    DataTable GetTable(string connectionString, string sql);
 
-        //DataSet ExecuteDataSet(string connectionString, string sql);
-    }
+    //    //DataSet ExecuteDataSet(string connectionString, string sql);
+    //}
 
 
 }
