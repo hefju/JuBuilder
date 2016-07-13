@@ -46,8 +46,11 @@ namespace JuBuilder
             txtConnString.Text = Default_connString;
             txtNamespace_VIEW.Text = Default_Namespace_VIEW;
             txtNamespace_MODEL.Text = Default_Namespace_MODEL;
+
+            txtTableName.Text = Default_tableName;//没有这一行不会生成代码
+
         }
-       private  string Default_connString="";
+        private string Default_connString="";
         private string Default_database="";
         private string Default_tableName="";
 
@@ -181,7 +184,7 @@ namespace JuBuilder
             foreach (DataRow dr in table.Rows)
             {
                 var field = dr["ColumnName"].ToString();
-                if (field == "CreateAt" || field == "ID") continue;
+                if (field == "CreateAt" || field == "statu" || field == "ID") continue;
                 var outline = string.Format("{0}=@{0}", field);
                 lst.Add(outline);
             }
@@ -197,7 +200,7 @@ namespace JuBuilder
             foreach (DataRow dr in table.Rows)
             {
                 var field = dr["ColumnName"].ToString();
-                if (field == "CreateAt" || field == "ID") continue;
+                if (field == "CreateAt" || field == "statu" || field == "ID") continue;
                 var outline = string.Format("@{0}", field);
                 lst.Add(outline);
             }
@@ -213,7 +216,7 @@ namespace JuBuilder
             foreach (DataRow dr in table.Rows)
             {
                 var field = dr["ColumnName"].ToString();
-                if (field == "CreateAt" || field == "ID") continue;
+                if (field == "CreateAt" || field == "statu" || field == "ID") continue;
                 var outline = string.Format("{0}", field);
                 lst.Add(outline);
             }
@@ -230,7 +233,8 @@ namespace JuBuilder
             {
                 var field = dr["ColumnName"].ToString();
                 var ftype = dr["ColumnType"].ToString();
-                if (field == "CreateAt" ) continue;
+                if (field == "CreateAt") continue;
+                if (field == "statu") continue;
                 if (ftype == "varchar" || ftype == "nvarchar")
                     ftype += string.Format("({0})", dr["CharLength"]);
                 if (ftype == "decimal") ftype = "float";//decimal需要写精度才行， 如果不写就只有整数没有小数。所以用float代替。
@@ -304,6 +308,7 @@ namespace JuBuilder
                 var field = dr["ColumnName"].ToString();
                 var ftype = dr["ColumnType"].ToString();
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
                 var what = cstype.GetLower(ftype);
                 var outline = string.Format("\t\tpublic {0} {1} {{ get; set; }}", what, field);
                 sWriter.Write(outline + Environment.NewLine);
@@ -525,6 +530,7 @@ namespace JuBuilder
             {
                 var field = dr["ColumnName"].ToString();
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
                 lst.Add("info." + field);
             }
             lst.Add("User.UserID");
@@ -541,6 +547,7 @@ namespace JuBuilder
             {
                 var field = dr["ColumnName"].ToString();
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
                 lst.Add("'{" + count.ToString() + "}'");
                 count++;
             }
@@ -558,6 +565,7 @@ namespace JuBuilder
             {
                 var field = dr["ColumnName"].ToString();
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
                 var ftype = dr["ColumnType"].ToString();
 
                 var fieldToString = field;
@@ -582,7 +590,8 @@ namespace JuBuilder
                 var whatType = cstype.GetLower(ftype);
                 if (whatType != "string")
                     fieldParse = string.Format("{0}.Parse(txt{1}.Text);", whatType, field);
-
+                //if (whatType == "DateTime?")
+                //    fieldParse = string.Format("txt合同签订日.Text == \"\" ? (DateTime?)null : DateTime.Parse(txt合同签订日.Text);", whatType, field);
                 var outline = string.Format("            info.{0} = {1}", field, fieldParse);
                 sWriter.Write(outline + Environment.NewLine);
             }
@@ -619,6 +628,7 @@ namespace JuBuilder
                 var field = dr["ColumnName"].ToString();
                 if (field == "ID") continue;
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
 
                 sb.Append(string.Format("{0}=b.{0},", field));
            
@@ -638,6 +648,7 @@ namespace JuBuilder
                 var field = dr["ColumnName"].ToString();
                 if (field == "ID") continue;
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
 
                 sbInsert1.Append(string.Format(comma+"{0}", field));
                 sbInsert2.Append(string.Format(comma+"'[{0}]'", fIndex));
@@ -666,6 +677,7 @@ namespace JuBuilder
                 var field = dr["ColumnName"].ToString();
                 if (field == "ID") continue;
                 if (field == "CreateAt") continue;
+                if (field == "statu") continue;
 
                 sbUpdate2.Append(string.Format(comma + "{0}='[{1}]'", field, fIndex));
                 comma = ",";
