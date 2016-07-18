@@ -15,6 +15,7 @@ namespace JuBuilder
             alias["int"] = "int";
             alias["varchar"] = "string";
             alias["nvarchar"] = "string";
+            alias["char"] = "string";
             alias["datetime"] = "DateTime";
             alias["float"] = "double";
             alias["decimal"] = "decimal";
