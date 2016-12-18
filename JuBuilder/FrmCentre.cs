@@ -805,6 +805,35 @@ namespace JuBuilder
             this.gridColumns.DataSource = SqlQuery.GetColumns(Default_connString, Default_database, tableName);
         }
 
+        private void btnBindingSource_Click(object sender, EventArgs e)
+        {
+            var tablename = txtTableName.Text;
+            var table = (DataTable)this.gridColumns.DataSource;
+            CsType cstype = new CsType();
+            var sb = new StringBuilder();
+            sb.Append("BindingSource bindSource = new BindingSource();");
+            //sb.Append(string.Format(" {0} info = new {0}();\n", tablename));
+
+            foreach (DataRow dr in table.Rows)
+            {
+                var field = dr["ColumnName"].ToString();
+                if (field == "CreateAt" || field == "statu") continue;
+                var ftype = dr["ColumnType"].ToString();
+
+                //var fieldParse = string.Format("dr.Cells[\"{0}\"].Value.ToString();", field);
+                //var whatType = cstype.GetLower(ftype);
+                //if (whatType != "string")
+                //    fieldParse = string.Format("{0}.Parse(dr.Cells[\"{1}\"].Value.ToString());", whatType, field);
+
+               var bind= string.Format("this.txt{0}.DataBindings.Add(\"Text\", bindSource, \"{0}\", true);\r\n", field );
+                sb.Append(bind);
+               // sb.Append(string.Format("info.{0} = {1}\n", field, fieldParse));
+            }
+            txtBindSource.Text = sb.ToString();
+
+            // BindingSource bindSource = new BindingSource();
+        }
+
     
       
 

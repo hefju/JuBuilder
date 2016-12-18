@@ -64,6 +64,9 @@
             this.txtDef = new System.Windows.Forms.RichTextBox();
             this.btn生成设计代码 = new System.Windows.Forms.Button();
             this.txtsjdm设计代码 = new System.Windows.Forms.RichTextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.txtBindSource = new System.Windows.Forms.RichTextBox();
+            this.btnBindingSource = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,6 +83,7 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -253,6 +257,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -291,7 +296,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(991, 483);
+            this.tabPage2.Size = new System.Drawing.Size(1246, 483);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "表索引";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -307,7 +312,7 @@
             this.gridIndexs.Name = "gridIndexs";
             this.gridIndexs.ReadOnly = true;
             this.gridIndexs.RowTemplate.Height = 23;
-            this.gridIndexs.Size = new System.Drawing.Size(985, 477);
+            this.gridIndexs.Size = new System.Drawing.Size(1240, 477);
             this.gridIndexs.TabIndex = 9;
             // 
             // tabPage3
@@ -317,7 +322,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(991, 483);
+            this.tabPage3.Size = new System.Drawing.Size(1246, 483);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "生成sql语句";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -347,7 +352,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(991, 483);
+            this.tabPage4.Size = new System.Drawing.Size(1246, 483);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "UI转成实体";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -384,7 +389,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(991, 483);
+            this.tabPage5.Size = new System.Drawing.Size(1246, 483);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "直接生成代码";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -467,6 +472,38 @@
             this.txtsjdm设计代码.TabIndex = 0;
             this.txtsjdm设计代码.Text = "";
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.btnBindingSource);
+            this.tabPage6.Controls.Add(this.txtBindSource);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1246, 483);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "BindingSource";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // txtBindSource
+            // 
+            this.txtBindSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtBindSource.Location = new System.Drawing.Point(6, 33);
+            this.txtBindSource.Name = "txtBindSource";
+            this.txtBindSource.Size = new System.Drawing.Size(968, 442);
+            this.txtBindSource.TabIndex = 1;
+            this.txtBindSource.Text = "";
+            // 
+            // btnBindingSource
+            // 
+            this.btnBindingSource.Location = new System.Drawing.Point(6, 6);
+            this.btnBindingSource.Name = "btnBindingSource";
+            this.btnBindingSource.Size = new System.Drawing.Size(122, 23);
+            this.btnBindingSource.TabIndex = 2;
+            this.btnBindingSource.Text = "生成bindsource";
+            this.btnBindingSource.UseVisualStyleBackColor = true;
+            this.btnBindingSource.Click += new System.EventHandler(this.btnBindingSource_Click);
+            // 
             // FrmCentre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -496,6 +533,7 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -538,5 +576,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCheat;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.RichTextBox txtBindSource;
+        private System.Windows.Forms.Button btnBindingSource;
     }
 }
