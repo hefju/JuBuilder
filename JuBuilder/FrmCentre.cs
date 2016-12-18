@@ -204,6 +204,7 @@ namespace JuBuilder
                 var outline = string.Format("@{0}", field);
                 lst.Add(outline);
             }
+            lst.Add("0");
             var msg = string.Join(",", lst);
             msg = "(" + msg + ")";
             sWriter.Write("\t" + msg);//+ Environment.NewLine);
@@ -220,6 +221,7 @@ namespace JuBuilder
                 var outline = string.Format("{0}", field);
                 lst.Add(outline);
             }
+            lst.Add("statu");
             var msg = string.Join(",", lst);
             msg = "(" + msg + ")";
             sWriter.Write("\t" + msg);//+ Environment.NewLine);
